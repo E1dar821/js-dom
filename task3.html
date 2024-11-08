@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Галерея изображений</title>
+  <style>
+    .thumbnail {
+      width: 100px;
+      margin: 5px;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      transition: transform 0.2s;
+    }
+    .thumbnail:hover {
+      transform: scale(1.1);
+    }
+    #largeImageContainer {
+      display: none;
+      margin-top: 20px;
+      position: relative;
+    }
+    #largeImage {
+      max-width: 100%;
+      border: 2px solid #000;
+    }
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .close-button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <h1>Галерея</h1>
+  <div class="gallery">
+    <img src="images/image1.jpeg" class="thumbnail" onclick="showImage('images/image1.jpeg')" alt="Миниатюра 1">
+    <img src="images/image2.jpeg" class="thumbnail" onclick="showImage('images/image2.jpeg')" alt="Миниатюра 2">
+    <img src="images/image3.jpeg" class="thumbnail" onclick="showImage('images/image3.jpeg')" alt="Миниатюра 3">
+    <img src="images/image4.jpeg" class="thumbnail" onclick="showImage('images/image4.jpeg')" alt="Миниатюра 4">
+    <img src="images/image5.jpeg" class="thumbnail" onclick="showImage('images/image5.jpeg')" alt="Миниатюра 5">
+  </div>
+  <div id="largeImageContainer">
+    <button class="close-button" onclick="closeImage()">✖</button>
+    <img id="largeImage" src="" alt="Увеличенное изображение">
+  </div>
+
+  <script>
+    function showImage(src) {
+      const largeImage = document.getElementById('largeImage');
+      largeImage.src = src;
+      document.getElementById('largeImageContainer').style.display = 'block';
+    }
+
+    function closeImage() {
+      document.getElementById('largeImageContainer').style.display = 'none';
+      document.getElementById('largeImage').src = '';
+    }
+  </script>
+</body>
+</html>

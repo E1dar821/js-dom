@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор</title>
+  <style>
+    input, select, button { display: block; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Калькулятор</h1>
+  <form id="calculatorForm">
+    <input type="number" id="num1" placeholder="Введите первое число">
+    <select id="operation">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input type="number" id="num2" placeholder="Введите второе число">
+    <button type="button" id="calculateBtn">Посчитать</button>
+    <p id="result"></p>
+  </form>
+
+  <script>
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      const operation = document.getElementById('operation').value;
+
+      if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById('result').innerText = 'Пожалуйста, введите оба числа';
+        return;
+      }
+
+      let result;
+      switch (operation) {
+        case '+': result = num1 + num2; break;
+        case '-': result = num1 - num2; break;
+        case '*': result = num1 * num2; break;
+        case '/': result = num2 !== 0 ? num1 / num2 : 'Ошибка: деление на ноль'; break;
+      }
+
+      document.getElementById('result').innerText = `Результат: ${result}`;
+    });
+  </script>
+</body>
+</html>
